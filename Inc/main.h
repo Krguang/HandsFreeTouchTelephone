@@ -85,10 +85,6 @@
 #define led3_GPIO_Port GPIOB
 #define led4_Pin GPIO_PIN_11
 #define led4_GPIO_Port GPIOB
-#define led5_Pin GPIO_PIN_12
-#define led5_GPIO_Port GPIOB
-#define led6_Pin GPIO_PIN_13
-#define led6_GPIO_Port GPIOB
 #define hfi_Pin GPIO_PIN_14
 #define hfi_GPIO_Port GPIOB
 #define tel_data_Pin GPIO_PIN_15

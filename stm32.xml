@@ -49,7 +49,7 @@
     <AllDependencies>
       <ProjectDependency>
         <RelativePath>HandsFreeTouchTelephone.gpdsc</RelativePath>
-        <Timestamp>131733453213916248</Timestamp>
+        <Timestamp>131749906681081021</Timestamp>
       </ProjectDependency>
     </AllDependencies>
     <RootDirectory>
@@ -129,10 +129,10 @@
                   <RelativePath>Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim.h</RelativePath>
                 </VirtualFileSnapshot>
                 <VirtualFileSnapshot>
-                  <RelativePath>Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim.c</RelativePath>
+                  <RelativePath>Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h</RelativePath>
                 </VirtualFileSnapshot>
                 <VirtualFileSnapshot>
-                  <RelativePath>Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal_tim_ex.h</RelativePath>
+                  <RelativePath>Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim.c</RelativePath>
                 </VirtualFileSnapshot>
                 <VirtualFileSnapshot>
                   <RelativePath>Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim_ex.c</RelativePath>
@@ -207,6 +207,9 @@
           <RelativePath>Inc\gpio.h</RelativePath>
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
+          <RelativePath>Inc\tim.h</RelativePath>
+        </VirtualFileSnapshot>
+        <VirtualFileSnapshot>
           <RelativePath>Inc\stm32f1xx_it.h</RelativePath>
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
@@ -217,6 +220,9 @@
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
           <RelativePath>Src\gpio.c</RelativePath>
+        </VirtualFileSnapshot>
+        <VirtualFileSnapshot>
+          <RelativePath>Src\tim.c</RelativePath>
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
           <RelativePath>Src\stm32f1xx_it.c</RelativePath>

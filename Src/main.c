@@ -39,6 +39,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "stm32f1xx_hal.h"
+#include "tim.h"
 #include "gpio.h"
 
 /* USER CODE BEGIN Includes */
@@ -52,6 +53,8 @@
 #define HT9200_CLK_LOW		HAL_GPIO_WritePin(tel_clk_GPIO_Port,tel_clk_Pin,GPIO_PIN_RESET)
 #define HT9200_CLK_HIGH		HAL_GPIO_WritePin(tel_clk_GPIO_Port,tel_clk_Pin,GPIO_PIN_SET)
 
+#define HT9200_MUTE_HIGH	HAL_GPIO_WritePin(mute_GPIO_Port,mute_Pin,GPIO_PIN_SET)
+#define HT9200_MUTE_LOW		HAL_GPIO_WritePin(mute_GPIO_Port,mute_Pin,GPIO_PIN_RESET)
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -61,6 +64,8 @@
 
 uint8_t bjyyFlag = 0;
 int8_t bjyyValue = 4;
+uint16_t count;
+uint8_t muteFlag;
 
 /* USER CODE END PV */
 
@@ -108,8 +113,9 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
-
+  HAL_TIM_Base_Start_IT(&htim4);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -177,8 +183,31 @@ void SystemClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+
+	if (htim->Instance == TIM4)//tim4 1ms
+	{
+
+		if (muteFlag == 1) {
+			count++;
+		}
+
+
+		if (count >4000) {
+			muteFlag = 0;
+			count = 0;
+			//	HAL_GPIO_TogglePin(led3_GPIO_Port,led3_Pin);
+			HT9200_MUTE_LOW;
+
+		}
+	}
+}
+
 void sendOneBit(uint8_t dtmfData) {
 
+	muteFlag = 1;
+	HT9200_MUTE_HIGH;
 	HT9200_CE_LOW;
 	HAL_Delay(20);
 	for (int i = 0; i<5; i++) {
@@ -243,7 +272,6 @@ void keyScan() {
 			else
 			{
 				bjyyFlag = 0;
-
 			}
 
 		}
